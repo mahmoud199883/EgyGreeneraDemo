@@ -1,0 +1,350 @@
+.section {
+  padding: 108px 0;
+  background:
+    radial-gradient(circle at top left, rgba(200, 122, 40, 0.08), transparent 28%),
+    linear-gradient(180deg, var(--cream) 0%, color-mix(in srgb, var(--cream) 86%, var(--surface) 14%) 100%);
+  color: var(--ink);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 28px;
+}
+
+/* Header Styling */
+.header {
+  max-width: 680px;
+  margin-bottom: 56px;
+}
+
+.eyebrow {
+  color: #c87a28;
+  font: 500 12px ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.line {
+  color: #c87a28;
+}
+
+.header h2 {
+  font: 600 clamp(32px, 4vw, 46px) / 1.1 Georgia, serif;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+.subhead {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Feature Section Layout */
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.imageFrame {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.imageFrame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.imageFrame:hover img {
+  transform: scale(1.03);
+}
+
+.imageOverlayBadge {
+  position: absolute;
+  bottom: 24px;
+  inset-inline-start: 24px;
+  background: color-mix(in srgb, var(--surface) 14%, rgba(10, 17, 14, 0.92));
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: var(--surface);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.checkIcon {
+  width: 32px;
+  height: 32px;
+  background: #c87a28;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.imageOverlayBadge strong {
+  display: block;
+  font: 700 20px Georgia, serif;
+  color: var(--surface);
+}
+
+.imageOverlayBadge small {
+  font: 500 11px ui-monospace, monospace;
+  color: color-mix(in srgb, var(--surface) 70%, var(--muted) 30%);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Feature Content & Accreditations */
+.featureContent h3 {
+  font: 600 32px Georgia, serif;
+  color: var(--ink);
+  margin: 0 0 18px;
+  line-height: 1.2;
+}
+
+.featureContent p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+.certBlock {
+  border-top: 1px solid #e3dec3;
+  padding-top: 24px;
+}
+
+.certTitle {
+  display: block;
+  font: 600 11px ui-monospace, monospace;
+  color: #c87a28;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.certBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font: 600 12px ui-monospace, monospace;
+  color: var(--ink);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.certBadge:hover {
+  border-color: #c87a28;
+  transform: translateY(-2px);
+}
+
+.certDot {
+  width: 6px;
+  height: 6px;
+  background-color: #c87a28;
+  border-radius: 50%;
+}
+
+/* Benefits Grid Cards */
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 64px;
+}
+
+.benefitCard {
+  background: linear-gradient(180deg, var(--surface) 0%, color-mix(in srgb, var(--surface) 78%, var(--cream) 22%) 100%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 12px 26px rgba(14, 33, 25, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.benefitCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+  border-color: #c87a28;
+}
+
+.benefitTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.stepNum {
+  font: 700 14px ui-monospace, monospace;
+  color: #c87a28;
+  background: rgba(200, 122, 40, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.cardBar {
+  width: 24px;
+  height: 2px;
+  background-color: #e3dec3;
+}
+
+.benefitCard h3 {
+  font: 600 20px Georgia, serif;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.benefitCard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Key Metrics Bar */
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: linear-gradient(180deg, var(--deep) 0%, #0b1b16 100%);
+  border-radius: 8px;
+  padding: 48px 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.statBox {
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+}
+
+.statBox:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  inset-inline-end: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.statBox b {
+  display: block;
+  font: 700 clamp(32px, 3.5vw, 44px) Georgia, serif;
+  color: #e9ae61;
+  margin-bottom: 8px;
+}
+
+.statBox span {
+  display: block;
+  font: 500 11px ui-monospace, monospace;
+  color: #d1dcd3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+:global(html.dark) .section {
+  background-color: var(--cream);
+  color: var(--ink);
+}
+
+:global(html.dark) .header h2,
+:global(html.dark) .featureContent h3,
+:global(html.dark) .benefitCard h3,
+:global(html.dark) .certBadge {
+  color: var(--ink);
+}
+
+:global(html.dark) .subhead,
+:global(html.dark) .featureContent p,
+:global(html.dark) .benefitCard p {
+  color: var(--muted);
+}
+
+:global(html.dark) .certBlock { border-color: var(--line); }
+
+:global(html.dark) .certBadge,
+:global(html.dark) .benefitCard {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+:global(html.dark) .cardBar { background-color: var(--line); }
+
+/* Responsive Rules */
+@media (max-width: 990px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@keyframes floatCard {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 700px) {
+  .statsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    padding: 36px 20px;
+  }
+
+  .statBox:not(:last-child)::after {
+    display: none;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+}

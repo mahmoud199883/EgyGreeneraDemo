@@ -1,0 +1,269 @@
+.hero {
+  min-height: 680px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  color: #f7f2e0;
+  background: #081a13;
+}
+
+/* Background image slideshow wrapper */
+.textureWrapper {
+  position: absolute;
+  inset: -3%;
+  width: 106%;
+  height: 106%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Individual image layer with subtle pan & 3s crossfade */
+.texture {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.texture.activeBg {
+  opacity: 1;
+}
+
+/* Dark green overlay to maintain text readability */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(8, 26, 19, 0.88), rgba(8, 26, 19, 0.65));
+  z-index: 1;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  padding: 96px 28px;
+  display: block;
+  align-items: center;
+}
+
+.copy {
+  max-width: 760px;
+  animation: enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.eyebrow {
+  color: #e9ae61;
+  font: 500 12px ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  background-color: #e9ae61;
+}
+
+.copy h1 {
+  font: 600 clamp(40px, 5.2vw, 64px) / 1.08 Georgia, serif;
+  max-width: 740px;
+  margin: 16px 0 22px;
+  color: #ffffff;
+  text-wrap: balance;
+  direction: inherit;
+}
+
+.copy h1 em {
+  color: #e9ae61;
+  font-style: italic;
+  display: block;
+  font-weight: 600;
+}
+
+.lead {
+  max-width: 560px;
+  color: #cbd5cb;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 32px 0 52px;
+}
+
+.primary,
+.secondary {
+  padding: 12px 24px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.primary {
+  background: #19382b;
+  color: #ffffff;
+  border: 1px solid #234838;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.primary:hover {
+  background: #234838;
+  transform: translateY(-2px);
+}
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+}
+
+.stats b,
+.stats span {
+  display: block;
+}
+
+.stats b {
+  color: #e9ae61;
+  font: 700 36px Georgia, serif;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stats span {
+  color: #a3b2a6;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card {
+  display: none;
+}
+
+.dot {
+  display: none;
+}
+
+.cardMeta {
+  display: none;
+}
+
+/* Bottom Strip Ticker Styling */
+.strip {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 28px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0b211a;
+  position: relative;
+  z-index: 2;
+}
+
+.stripBadge {
+  color: #e9ae61;
+  font: 11px ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  z-index: 3;
+  background: #0b211a;
+  padding-right: 12px;
+}
+
+.tickerTrack {
+  display: flex;
+  width: 100%;
+  overflow: visible;
+}
+
+.tickerContent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  white-space: normal;
+  font: 500 13px Georgia, serif;
+  color: #8c9e91;
+  animation: none;
+  will-change: auto;
+}
+
+:global(html.dark) .card {
+  display: none;
+}
+
+:global(html.dark) .cardMeta {
+  display: none;
+}
+
+.strip:hover .tickerContent {
+  animation-play-state: paused;
+}
+
+@keyframes drift {
+  to {
+    transform: scale(1.07) translate3d(-1%, -1%, 0);
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 800px) {
+  .hero {
+    min-height: auto;
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    padding: 76px 20px 55px;
+  }
+  .card {
+    max-width: 430px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .stats {
+    gap: 20px;
+  }
+  .strip {
+    padding: 14px 20px;
+  }
+}

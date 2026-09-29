@@ -1,0 +1,320 @@
+.section {
+  position: relative;
+  padding: 110px 0 90px;
+  min-height: 760px;
+  background:
+    radial-gradient(circle at center, rgba(15, 70, 55, 0.45), transparent 38%),
+    linear-gradient(180deg, rgba(4, 19, 16, 0.92), rgba(6, 21, 18, 0.88));
+  color: #f7f3e9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.bgContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.9s ease, transform 1.2s ease;
+  filter: saturate(0.8) contrast(1.05);
+}
+
+.bgImage.activeBg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 18, 15, 0.42) 0%,
+    rgba(7, 18, 15, 0.56) 32%,
+    rgba(7, 18, 15, 0.76) 100%
+  );
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1220px;
+  margin: auto;
+  padding: 0 28px;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 54px;
+}
+
+.eyebrow {
+  color: #d7a452;
+  font: 500 12px ui-monospace, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.line {
+  color: #d7a452;
+}
+
+.header h2 {
+  font: 600 clamp(42px, 5vw, 88px) / 0.95 Georgia, serif;
+  color: #f8f4ee;
+  margin: 0 0 18px;
+  letter-spacing: -0.06em;
+}
+
+.subhead {
+  color: rgba(233, 241, 235, 0.8);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.interactiveStage {
+  display: grid;
+  grid-template-columns: 0.9fr 1.3fr;
+  gap: 34px;
+  align-items: center;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.timelineTab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: rgba(232, 239, 235, 0.76);
+  text-align: start;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.timelineTab:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(246, 194, 110, 0.4);
+  transform: translateX(2px);
+}
+
+.activeTab {
+  background: linear-gradient(90deg, rgba(195, 138, 48, 0.14), rgba(255, 255, 255, 0.06));
+  border-color: rgba(214, 168, 90, 0.95) !important;
+  box-shadow: inset 0 0 0 1px rgba(214, 168, 90, 0.2);
+  color: #ffffff !important;
+}
+
+.tabIndex {
+  font: 700 13px ui-monospace, monospace;
+  color: #d7a452;
+  letter-spacing: 0.1em;
+  min-width: 40px;
+}
+
+.tabTitle {
+  font: 600 17px Georgia, serif;
+  flex: 1;
+  letter-spacing: -0.02em;
+}
+
+.activeBar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #efc57b, #c98a34);
+  border-radius: 12px 0 0 12px;
+}
+
+.displayCard {
+  background: rgba(10, 27, 22, 0.72);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 214, 164, 0.14);
+  border-radius: 14px;
+  padding: 30px 32px 26px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.38);
+  animation: fadeIn 0.45s ease;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.stageBadge {
+  font: 600 11px ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  color: #142119;
+  background: linear-gradient(90deg, #e8bc6d, #d8a654);
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.stepCounter {
+  font: 500 12px ui-monospace, monospace;
+  color: rgba(230, 236, 230, 0.72);
+  letter-spacing: 0.1em;
+}
+
+.cardContent h3 {
+  font: 600 clamp(28px, 3vw, 52px) / 1.1 Georgia, serif;
+  color: #f8f4ee;
+  margin: 0 0 18px;
+  letter-spacing: -0.05em;
+}
+
+.cardContent p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(228, 235, 230, 0.84);
+  margin: 0 0 22px;
+  min-height: 88px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.navBtn {
+  background: transparent;
+  border: none;
+  color: #d7a452;
+  font: 600 12px ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.25s ease, color 0.25s ease;
+  padding: 0;
+}
+
+.navBtn:hover:not(:disabled) {
+  color: #f0c67c;
+}
+
+.navBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #d9a95d, #f0d095);
+  border-radius: inherit;
+  transition: width 0.4s ease;
+}
+
+:global(html.dark) .section {
+  background:
+    radial-gradient(circle at center, rgba(15, 70, 55, 0.45), transparent 38%),
+    linear-gradient(180deg, rgba(4, 19, 16, 0.92), rgba(6, 21, 18, 0.88));
+}
+
+:global(html.dark) .bgOverlay {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 12, 8, 0.78) 0%,
+    rgba(4, 12, 8, 0.8) 35%,
+    rgba(4, 12, 8, 0.92) 100%
+  );
+}
+
+:global(html.dark) .displayCard {
+  background: rgba(10, 27, 22, 0.74);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.45;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .interactiveStage {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .displayCard {
+    padding: 26px 22px;
+  }
+
+  .cardContent p {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 580px) {
+  .section {
+    padding-top: 90px;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  .header h2 {
+    line-height: 1.05;
+  }
+
+  .timelineTab {
+    padding: 14px 16px;
+  }
+
+  .tabTitle {
+    font-size: 14px;
+  }
+
+  .cardFooter {
+    gap: 12px;
+  }
+
+  .navBtn {
+    letter-spacing: 0.08em;
+  }
+}

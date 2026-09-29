@@ -1,0 +1,236 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--cream, #f7f3e9) 92%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line, #e3dec3);
+}
+
+.inner {
+  max-width: 1200px;
+  height: 76px;
+  margin: auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Brand & Logo Styling */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink, #17251d);
+}
+
+.markSvg {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.brandText {
+  font: 700 24px Georgia, serif;
+  letter-spacing: -0.02em;
+  color: var(--ink, #0e2a20);
+}
+
+/* Navigation */
+.desktopNav {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.desktopNav a {
+  text-decoration: none;
+  color: var(--muted, #58635a);
+  transition: color 0.2s ease;
+}
+
+.desktopNav a:hover {
+  color: var(--ochre, #c87a28);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconButton,
+.language {
+  border: 1px solid var(--line, #dcd7c9);
+  background: transparent;
+  color: var(--ink, #17251d);
+  min-width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.iconButton:hover {
+  border-color: var(--ochre, #c87a28);
+  color: var(--ochre, #c87a28);
+}
+
+.language {
+  min-width: 104px;
+  padding: 0 28px 0 12px;
+  border-radius: 4px;
+  background: transparent;
+  font: 600 12px Georgia, serif;
+  letter-spacing: 0;
+  line-height: 1;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.languageControl {
+  position: relative;
+  display: flex;
+}
+
+.languageControl::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  color: currentColor;
+  pointer-events: none;
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.language:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ochre, #c87a28) 45%, transparent);
+  outline-offset: 2px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menuButton {
+  display: none;
+}
+
+/* Mobile Sheet Drawer */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  transform: translateY(-100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  background: var(--cream, #f7f3e9);
+  padding: 24px 28px;
+}
+
+.open {
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sheetTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sheet nav {
+  display: grid;
+  gap: 24px;
+  margin-top: 54px;
+}
+
+.sheet nav a {
+  font: 600 28px Georgia, serif;
+  color: var(--ink, #17251d);
+  text-decoration: none;
+}
+
+.sheet nav a:hover {
+  color: var(--ochre, #c87a28);
+}
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+}
+
+.languageControl:has(.language[aria-expanded='true'])::after {
+  transform: translateY(-35%) rotate(225deg);
+}
+
+.languageMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 30;
+  width: 148px;
+  padding: 6px;
+  border: 1px solid var(--line, #dcd7c9);
+  border-radius: 6px;
+  background: var(--cream, #f7f3e9);
+  box-shadow: 0 12px 28px rgb(14 42 32 / 16%);
+}
+
+.languageOption {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink, #17251d);
+  font: 600 13px Georgia, serif;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+.languageOption:hover,
+.languageOption:focus-visible {
+  background: color-mix(in srgb, var(--cream, #f7f3e9) 72%, var(--ochre, #c87a28));
+  color: var(--ink, #17251d);
+  outline: none;
+}
+
+.selectedLanguage {
+  color: var(--ochre, #c87a28);
+}

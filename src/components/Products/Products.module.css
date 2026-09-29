@@ -1,0 +1,445 @@
+.section {
+  padding: 96px 0;
+  background-color: #f7f3e9;
+  color: #17251d;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 28px;
+}
+
+.head {
+  max-width: 680px;
+  margin-bottom: 48px;
+}
+
+.eyebrow {
+  color: #c87a28;
+  font: 500 12px ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.line {
+  color: #c87a28;
+}
+
+.head h2 {
+  margin: 0 0 16px;
+  font: 600 clamp(32px, 4vw, 48px) / 1.08 Georgia, serif;
+  color: #17251d;
+}
+
+.subtext {
+  color: #58635a;
+  font-size: 15px;
+  line-height: 1.6;
+  display: block;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 96px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #e2ded4;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover,
+.activeCard {
+  border-color: #c87a28;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.cardImage {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+
+.cardBody {
+  padding: 18px 16px;
+}
+
+.cardBody b {
+  display: block;
+  font: 600 18px Georgia, serif;
+  color: #17251d;
+}
+
+.cardBody i {
+  display: block;
+  color: #727c74;
+  font-size: 12px;
+  font-style: italic;
+  margin: 4px 0 16px;
+}
+
+.bars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 8px;
+}
+
+.barOn {
+  flex: 1;
+  height: 4px;
+  background-color: #c87a28;
+  border-radius: 1px;
+}
+
+.barOff {
+  flex: 1;
+  height: 4px;
+  background-color: #e5e0d5;
+  border-radius: 1px;
+}
+
+.barLabel {
+  font: 500 10px ui-monospace, monospace;
+  color: #8c968e;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Harvest Wheel Section */
+.wheelContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding-top: 32px;
+}
+
+.wheelGraphic {
+  position: relative;
+  margin: auto;
+}
+
+.wheelSvg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.sliceInactive {
+  fill: #ede7d8;
+  stroke: #f7f3e9;
+  stroke-width: 2px;
+  transition: fill 0.3s ease;
+}
+
+.sliceActive {
+  fill: #c87a28;
+  stroke: #f7f3e9;
+  stroke-width: 2px;
+  transition: fill 0.3s ease;
+}
+
+.labelInactive {
+  font: 500 11px ui-monospace, monospace;
+  fill: #737c75;
+}
+
+.labelActive {
+  font: 700 11px ui-monospace, monospace;
+  fill: #17251d;
+}
+
+.wheelCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f7f3e9;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.wheelCenter strong {
+  font: 600 16px Georgia, serif;
+  color: #17251d;
+}
+
+.centerDot {
+  width: 6px;
+  height: 6px;
+  background-color: #c87a28;
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.wheelContent h3 {
+  font: 600 36px Georgia, serif;
+  color: #17251d;
+  margin: 12px 0 18px;
+}
+
+.wheelDescription {
+  color: #4f5a51;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.wheelStatus {
+  font: 500 13px ui-monospace, monospace;
+  color: #4f5a51;
+}
+
+/* Modal Popup Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(23, 37, 29, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal {
+  background: #f7f3e9;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  padding: 32px;
+  border: 1px solid #e2ded4;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #ffffff;
+  border: 1px solid #e2ded4;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #17251d;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.closeBtn:hover {
+  background-color: #c87a28;
+  color: #ffffff;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+/* Left Slider Column */
+.sliderCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sliderStage {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 260px;
+  background: #e2ded4;
+}
+
+.sliderImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slideTag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(23, 37, 29, 0.85);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font: 500 12px ui-monospace, monospace;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #17251d;
+}
+
+.prevBtn { left: 8px; }
+.nextBtn { right: 8px; }
+
+.thumbs {
+  display: flex;
+  gap: 8px;
+}
+
+.thumbBtn {
+  flex: 1;
+  height: 50px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+}
+
+.thumbBtn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activeThumb {
+  border-color: #c87a28;
+}
+
+/* Right Details Column */
+.detailsCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsCol h2 {
+  font: 600 28px Georgia, serif;
+  margin: 0;
+  color: #17251d;
+}
+
+.modalLatin {
+  color: #727c74;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.modalDesc {
+  color: #4f5a51;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.modalWheelWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #e2ded4;
+  font: 500 12px ui-monospace, monospace;
+  color: #17251d;
+}
+
+:global(html.dark) .section,
+:global(html.dark) .modal,
+:global(html.dark) .wheelCenter {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+:global(html.dark) .card,
+:global(html.dark) .closeBtn {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+:global(html.dark) .head h2,
+:global(html.dark) .cardBody b,
+:global(html.dark) .wheelCenter strong,
+:global(html.dark) .wheelContent h3,
+:global(html.dark) .detailsCol h2,
+:global(html.dark) .closeBtn,
+:global(html.dark) .modalFooter {
+  color: var(--ink);
+}
+
+:global(html.dark) .subtext,
+:global(html.dark) .cardBody i,
+:global(html.dark) .wheelDescription,
+:global(html.dark) .wheelStatus,
+:global(html.dark) .modalLatin,
+:global(html.dark) .modalDesc {
+  color: var(--muted);
+}
+
+:global(html.dark) .barOff { background-color: #344137; }
+:global(html.dark) .sliceInactive { fill: #26352d; stroke: var(--cream); }
+:global(html.dark) .labelInactive { fill: var(--muted); }
+:global(html.dark) .labelActive { fill: var(--ink); }
+:global(html.dark) .modalFooter { border-color: var(--line); }
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wheelContainer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .modalGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .modal {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,17 @@
+.app {
+  --deep: #123328;
+  --mid: #1f5c46;
+  --bright: #2f8a67;
+  --ochre: #b8752b;
+  --wheat: #efe7d0;
+  --cream: #f6f1e2;
+  --ink: #1a2420;
+  --muted: #59635c;
+  --line: #ddd2ab;
+  --surface: #ffffff;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+:global(html.dark) .app { --deep: #08120d; --mid: #174332; --bright: #31916d; --cream: #111b16; --wheat: #17251d; --ink: #f0ead6; --muted: #bec7bc; --line: #344137; --surface: #19261f; }
