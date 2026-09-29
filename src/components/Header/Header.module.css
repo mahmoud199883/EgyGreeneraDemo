@@ -184,6 +184,10 @@
     display: none;
   }
 
+  .brandText {
+    display: none;
+  }
+
   .menuButton {
     display: flex;
   }

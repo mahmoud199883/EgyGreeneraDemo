@@ -12,6 +12,21 @@ import { createTranslator } from './i18n/translations'
 import './utils/animations.css'
 import styles from './App.module.css'
 
+const BASE_PATH = import.meta.env.BASE_URL || '/'
+
+const normalizePath = (rawPath = window.location.pathname) => {
+  const path = rawPath || '/'
+  const base = BASE_PATH.replace(/\/+$/, '') || ''
+  const withoutBase = base && path.startsWith(base) ? path.slice(base.length) || '/' : path
+  return withoutBase === '' ? '/' : withoutBase.replace(/\/+$/, '') || '/'
+}
+
+const buildAppPath = (path) => {
+  const normalized = path.startsWith('/') ? path : `/${path}`
+  const base = BASE_PATH.replace(/\/+$/, '')
+  return `${base}${normalized}` || normalized
+}
+
 const routeSeoKeys = {
   '/': 'home',
   '/frozen': 'frozen',
@@ -51,7 +66,7 @@ function setCanonical(path) {
 function App() {
   const [language, setLanguage] = useState('en')
   const [dark, setDark] = useState(false)
-  const [path, setPath] = useState(window.location.pathname)
+  const [path, setPath] = useState(() => normalizePath(window.location.pathname))
 
   useEffect(() => {
     document.documentElement.lang = language
@@ -71,18 +86,19 @@ function App() {
     setMeta('og:description', description, true)
     setMeta('og:locale', language, true)
 
-    setCanonical(path)
+    setCanonical(buildAppPath(path))
   }, [language, path])
 
   useEffect(() => {
-    const handlePopState = () => setPath(window.location.pathname)
+    const handlePopState = () => setPath(normalizePath(window.location.pathname))
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
   const navigate = (nextPath) => {
-    window.history.pushState({}, '', nextPath)
-    setPath(nextPath)
+    const nextUrl = buildAppPath(nextPath)
+    window.history.pushState({}, '', nextUrl)
+    setPath(normalizePath(nextUrl))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

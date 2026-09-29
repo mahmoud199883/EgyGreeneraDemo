@@ -16,6 +16,12 @@ function LogoMark() {
   )
 }
 
+const toAppUrl = (path) => {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/+$/, '')
+  const normalized = path.startsWith('/') ? path : `/${path}`
+  return base ? `${base}${normalized}` : normalized
+}
+
 export default function Header({ language, onLanguageChange, dark, onThemeChange, onNavigate }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false)
@@ -43,14 +49,14 @@ export default function Header({ language, onLanguageChange, dark, onThemeChange
     <>
       <header className={styles.header}>
         <div className={styles.inner}>
-          <a className={styles.brand} href="/" onClick={(event) => navigate(event, '/')}>
+          <a className={styles.brand} href={toAppUrl('/')} onClick={(event) => navigate(event, '/')}>
             <LogoMark />
             <span className={styles.brandText}>EgyGreenera</span>
           </a>
 
           <nav className={styles.desktopNav}>
             {getPrimaryNavItems().map((item) => (
-              <a key={item.id} href={item.path} onClick={(event) => navigate(event, item.path)}>
+              <a key={item.id} href={toAppUrl(item.path)} onClick={(event) => navigate(event, item.path)}>
                 {t(item.labelKey)}
               </a>
             ))}
@@ -109,7 +115,7 @@ export default function Header({ language, onLanguageChange, dark, onThemeChange
       {/* Mobile Drawer Sheet */}
       <div className={`${styles.sheet} ${menuOpen ? styles.open : ''}`}>
         <div className={styles.sheetTop}>
-          <a className={styles.brand} href="/" onClick={(event) => navigate(event, '/')}>
+          <a className={styles.brand} href={toAppUrl('/')} onClick={(event) => navigate(event, '/')}>
             <LogoMark />
             <span className={styles.brandText}>EgyGreenera</span>
           </a>
@@ -123,7 +129,7 @@ export default function Header({ language, onLanguageChange, dark, onThemeChange
         </div>
         <nav>
           {getPrimaryNavItems().map((item) => (
-            <a key={item.id} href={item.path} onClick={(event) => navigate(event, item.path)}>
+            <a key={item.id} href={toAppUrl(item.path)} onClick={(event) => navigate(event, item.path)}>
               {t(item.labelKey)}
             </a>
           ))}

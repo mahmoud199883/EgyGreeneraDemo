@@ -9,6 +9,9 @@
   --muted: #59635c;
   --line: #ddd2ab;
   --surface: #ffffff;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
   background: var(--cream);
   color: var(--ink);
   min-height: 100vh;
